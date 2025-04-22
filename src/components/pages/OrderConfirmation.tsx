@@ -11,6 +11,7 @@ import {
 import {useNavigation, StackActions} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {colors} from '../../assets/theme/colors';
+import Image from '../atoms/Image';
 
 // Define the navigation param list type
 type RootStackParamList = {
@@ -22,114 +23,6 @@ type RootStackParamList = {
 
 // Define the navigation prop type
 type OrderConfirmationNavigationProp = StackNavigationProp<RootStackParamList>;
-
-// Food Illustration Component - Simple collage style like in the screenshot
-const FoodIllustration = () => {
-  return (
-    <View style={illustrationStyles.container}>
-      <View style={illustrationStyles.row}>
-        <View
-          style={[
-            illustrationStyles.item,
-            illustrationStyles.largeItem,
-            illustrationStyles.greenItem,
-          ]}
-        />
-        <View style={illustrationStyles.column}>
-          <View
-            style={[illustrationStyles.item, illustrationStyles.sandItem]}
-          />
-          <View style={[illustrationStyles.item, illustrationStyles.tanItem]} />
-        </View>
-      </View>
-      <View style={illustrationStyles.row}>
-        <View style={illustrationStyles.column}>
-          <View
-            style={[illustrationStyles.item, illustrationStyles.pinkItem]}
-          />
-          <View
-            style={[illustrationStyles.item, illustrationStyles.mintItem]}
-          />
-        </View>
-        <View
-          style={[
-            illustrationStyles.item,
-            illustrationStyles.largeItem,
-            illustrationStyles.blueItem,
-          ]}
-        />
-      </View>
-      <View style={illustrationStyles.row}>
-        <View
-          style={[
-            illustrationStyles.item,
-            illustrationStyles.wideItem,
-            illustrationStyles.peachItem,
-          ]}
-        />
-        <View style={[illustrationStyles.item, illustrationStyles.skyItem]} />
-        <View style={[illustrationStyles.item, illustrationStyles.beigeItem]} />
-      </View>
-    </View>
-  );
-};
-
-const illustrationStyles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    padding: 5,
-  },
-  row: {
-    flexDirection: 'row',
-    flex: 1,
-    marginBottom: 5,
-  },
-  column: {
-    flexDirection: 'column',
-    flex: 1,
-    marginLeft: 5,
-  },
-  item: {
-    flex: 1,
-    borderRadius: 4,
-    marginBottom: 5,
-  },
-  largeItem: {
-    flex: 2,
-    marginRight: 5,
-  },
-  wideItem: {
-    flex: 2,
-  },
-  greenItem: {
-    backgroundColor: '#B8D4C8',
-  },
-  sandItem: {
-    backgroundColor: '#F2D0A7',
-  },
-  tanItem: {
-    backgroundColor: '#EACEB4',
-  },
-  pinkItem: {
-    backgroundColor: '#E5D1D0',
-  },
-  mintItem: {
-    backgroundColor: '#C7D8C6',
-  },
-  blueItem: {
-    backgroundColor: '#D5E2E3',
-  },
-  peachItem: {
-    backgroundColor: '#EFD9CE',
-  },
-  skyItem: {
-    backgroundColor: '#C9D7DD',
-  },
-  beigeItem: {
-    backgroundColor: '#F2D7BD',
-  },
-});
 
 const OrderConfirmation = () => {
   const navigation = useNavigation<OrderConfirmationNavigationProp>();
@@ -155,9 +48,15 @@ const OrderConfirmation = () => {
       </View>
 
       <ScrollView style={styles.content}>
-        {/* Illustration */}
-        <View style={styles.illustrationContainer}>
-          <FoodIllustration />
+        {/* Check Mark Image */}
+        <View style={styles.imageContainer}>
+          <Image
+            source={{
+              uri: 'https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?q=80&w=500&auto=format&fit=crop',
+            }}
+            containerStyle={styles.checkImageContainer}
+            imageStyle={styles.checkImage}
+          />
         </View>
 
         {/* Confirmation Message */}
@@ -211,12 +110,19 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
   },
-  illustrationContainer: {
+  imageContainer: {
     marginVertical: 24,
-    height: 300, // Fixed height for the illustration
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkImageContainer: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
     backgroundColor: '#f7f7f7',
-    borderRadius: 8,
-    overflow: 'hidden',
+  },
+  checkImage: {
+    resizeMode: 'cover',
   },
   messageContainer: {
     marginVertical: 24,
