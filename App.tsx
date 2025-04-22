@@ -5,6 +5,7 @@ import Home from './src/components/pages/home';
 import Search from './src/components/pages/search';
 import Cart from './src/components/pages/cart';
 import { icons } from './src/assets/icons';
+import {colors} from './src/assets/theme/colors';
 
 type RootTabParamList = {
   Home: undefined;
@@ -39,7 +40,7 @@ const App = () => {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          tabBarActiveTintColor: 'tomato',
+          tabBarActiveTintColor: colors.primary,
           tabBarInactiveTintColor: 'gray',
           headerShown: false,
         }}
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   activeIcon: {
     width: 24,
     height: 24,
-    tintColor: 'tomato',
+    tintColor: colors.primary,
   },
   inactiveIcon: {
     width: 24,
