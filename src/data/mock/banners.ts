@@ -105,4 +105,4 @@ export const allBanners: BannerData[] = [
   ...featuredBanners,
   ...categoryBanners,
   ...promotionalBanners,
-]; 
+];
