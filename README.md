@@ -1,6 +1,19 @@
-# E-Commerce Mobile App
+
 
 A modern React Native mobile application for e-commerce shopping with a clean UI and smooth user experience.
+
+## Screenshots
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center">
+  <img src="https://github.com/user-attachments/assets/c9bb7dbb-98c2-44d8-9acd-02d59f0423a0" alt="Home Screen" width="150" />
+  <img src="https://github.com/user-attachments/assets/ab4285c6-b4ae-48da-97d8-13d919f3eb57" alt="Product List" width="150" />
+  <img src="https://github.com/user-attachments/assets/38871054-3b96-437b-a140-c148027d1954" alt="Product Detail" width="150" />
+  <img src="https://github.com/user-attachments/assets/d38900ab-0ab6-4e9c-9ac3-1d5fa7805839" alt="Shopping Cart" width="150" />
+  <img src="https://github.com/user-attachments/assets/458f3d68-b51e-4753-9082-c54ed67a6891" alt="Checkout" width="150" />
+  <img src="https://github.com/user-attachments/assets/8a0db21b-a905-4a82-b10e-83b802c48c75" alt="Checkout" width="150" />
+  <img src="https://github.com/user-attachments/assets/774dd99c-efef-45c9-8377-096ae3a6e53c" alt="Checkout" width="150" />
+</div>
+
+
 
 ## 📱 Features
 
