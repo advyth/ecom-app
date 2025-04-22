@@ -1,97 +1,173 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# E-Commerce Mobile App
 
-# Getting Started
+A modern React Native mobile application for e-commerce shopping with a clean UI and smooth user experience.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 📱 Features
 
-## Step 1: Start Metro
+- **Browse Products**: Navigate through product categories and listings
+- **Search**: Find products by name, category, or description
+- **Product Details**: View comprehensive product information 
+- **Shopping Cart**: Add, update, and remove items from your cart
+- **Checkout Process**: Complete purchase with order summary and confirmation
+- **State Persistence**: Cart state persists even after app restart
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 🏗️ Architecture
 
-To start the Metro dev server, run the following command from the root of your React Native project:
-
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                       E-Commerce App                             │
+└───────────────────────────────┬─────────────────────────────────┘
+                                │
+            ┌─────────────────────────────────────────┐
+            │         React Native Application         │
+            └─────────────────────┬───────────────────┘
+                                  │
+┌─────────────────────┬──────────┴───────────┬───────────────────┐
+│                     │                      │                   │
+▼                     ▼                      ▼                   ▼
+┌─────────────┐ ┌──────────────┐  ┌───────────────┐  ┌───────────────┐
+│  Navigation │ │  Components  │  │ State (Redux) │  │ Data Services │
+└──────┬──────┘ └──────┬───────┘  └───────┬───────┘  └───────┬───────┘
+       │               │                  │                  │
+       ▼               ▼                  ▼                  ▼
+┌──────────────┐ ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+│ Stack & Tab  │ │ Atomic Design│  │ Redux Toolkit│  │  Mock Data   │
+│ Navigators   │ │ Pattern      │  │ Redux Persist│  │  (API Ready) │
+└──────────────┘ └──────────────┘  └──────────────┘  └──────────────┘
 ```
 
-## Step 2: Build and run your app
+## 🧩 Technical Stack
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### Core Technologies
+- **React Native** (v0.79.1): Framework for building native mobile apps
+- **TypeScript**: Type-safe JavaScript
+- **Redux Toolkit**: State management with a more streamlined approach
+- **Redux Persist**: Persistence layer for preserving app state across sessions
 
-### Android
+### Navigation
+- **React Navigation v7**: Handles routing and navigation between screens
+  - Bottom Tab Navigator for main app sections
+  - Stack Navigator for screen transitions
 
+### UI Organization
+- **Atomic Design Pattern**: Components organized as:
+  - **Atoms**: Basic building blocks (buttons, inputs, text)
+  - **Molecules**: Simple component combinations
+  - **Organisms**: Complex UI sections
+  - **Templates**: Page layouts
+  - **Pages**: Complete screens with business logic
+
+### Data Management
+- **Redux Store**: Centralized state management
+  - Cart slice for shopping cart functionality
+  - AsyncStorage for local persistence
+
+## 📁 Project Structure
+
+```
+ecom-app/
+├── android/                 # Android native code
+├── ios/                     # iOS native code
+├── src/                     # Main source code
+│   ├── assets/              # Images, fonts, and other static resources
+│   ├── components/          # UI components following Atomic Design
+│   │   ├── atoms/           # Basic UI elements
+│   │   ├── molecules/       # Simple compositions of atoms
+│   │   ├── organisms/       # Complex UI sections
+│   │   ├── templates/       # Page layouts
+│   │   └── pages/           # Complete screens
+│   ├── data/                # Data layer
+│   │   └── mock/            # Mock data for development
+│   └── store/               # Redux state management
+│       ├── index.ts         # Store configuration
+│       └── slices/          # Redux Toolkit slices
+│           └── cartSlice.ts # Cart state management
+├── App.tsx                  # Main application component
+└── index.js                 # Application entry point
+```
+
+## 📋 Application Flow
+
+1. **Home Screen**: Browse featured products and categories
+2. **Search Screen**: Find products using search functionality
+3. **Product Detail**: View detailed product information
+4. **Cart**: Review and manage items in cart
+5. **Order Summary**: Review order before checkout
+6. **Order Confirmation**: View successful order details
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js >= 18
+- Ruby (for iOS development)
+- Android Studio (for Android development)
+- Xcode (for iOS development)
+- CocoaPods (for iOS dependencies)
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+   
+3. For iOS, install CocoaPods dependencies:
+   ```sh
+   bundle install
+   bundle exec pod install
+   ```
+
+### Running the App
+
+#### Android
 ```sh
-# Using npm
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
+#### iOS
 ```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## 🧪 Testing
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```sh
+npm test
+```
 
-## Step 3: Modify your app
+## 🛠️ Development
 
-Now that you have successfully run the app, let's make changes!
+### Code Style and Linting
+- ESLint for code quality
+- Prettier for code formatting
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+```sh
+npm run lint
+```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### Future Enhancements
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+- User authentication system
+- Payment gateway integration
+- Product reviews and ratings
+- Order history
+- Wishlist functionality
+- Push notifications
 
-## Congratulations! :tada:
+## 📦 Dependencies
 
-You've successfully run and modified your React Native App. :partying_face:
+### Production Dependencies
+- React Native v19.0.0
+- React Navigation v7
+- Redux Toolkit
+- Redux Persist
+- React Native Vector Icons
+- Async Storage
 
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+### Development Dependencies
+- TypeScript
+- Jest for testing
+- ESLint for linting
+- Prettier for code formatting
