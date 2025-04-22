@@ -8,6 +8,7 @@ import {
   FlatList,
   SafeAreaView,
   StatusBar,
+  Platform,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {RootState} from '../../store';
@@ -20,6 +21,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {colors} from '../../assets/theme/colors';
+import { icons } from '../../assets/icons';
 
 // Define the navigation param list type
 type RootStackParamList = {
@@ -87,7 +89,7 @@ const Cart = () => {
   const hasItems = cartItems.length > 0;
 
   const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum: number, item: CartItemType) => sum + item.price * item.quantity,
     0,
   );
 
@@ -120,7 +122,7 @@ const Cart = () => {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={goBack} style={styles.backButton}>
-          <Text style={styles.backButtonText}>←</Text>
+          <Image source={icons.back} style={styles.icon} />
         </TouchableOpacity>
         <Text style={styles.title}>Shopping Bag ({cartItems.length})</Text>
       </View>
@@ -165,6 +167,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     flexDirection: 'row',
@@ -177,9 +180,10 @@ const styles = StyleSheet.create({
   backButton: {
     marginRight: 16,
   },
-  backButtonText: {
-    fontSize: 24,
-    fontWeight: '400',
+  icon: {
+    width: 24,
+    height: 24,
+    tintColor: colors.text,
   },
   title: {
     fontSize: 28,

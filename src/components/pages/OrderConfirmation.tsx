@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   StatusBar,
   ScrollView,
+  Platform,
 } from 'react-native';
 import {useNavigation, StackActions} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -41,9 +42,6 @@ const OrderConfirmation = () => {
 
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={goToHome} style={styles.backButton}>
-          <Text style={styles.backButtonText}>←</Text>
-        </TouchableOpacity>
         <Text style={styles.title}>Order Confirmation</Text>
       </View>
 
@@ -80,6 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     flexDirection: 'row',

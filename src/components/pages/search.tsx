@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   StatusBar,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import SearchBar from '../atoms/SearchBar';
@@ -106,6 +107,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   trendingContainer: {
     paddingHorizontal: 16,

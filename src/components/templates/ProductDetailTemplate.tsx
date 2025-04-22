@@ -7,6 +7,7 @@ import {
   StatusBar,
   Dimensions,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {ProductData} from '../../data/mock/products';
 import Header from '../organisms/Header';
@@ -187,6 +188,7 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   container: {
     flex: 1,

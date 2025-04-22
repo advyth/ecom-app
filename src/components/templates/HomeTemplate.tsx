@@ -5,6 +5,7 @@ import {
   ScrollView,
   SafeAreaView,
   StatusBar,
+  Platform,
 } from 'react-native';
 import Header from '../organisms/Header';
 import FeaturedBanners from '../organisms/FeaturedBanners';
@@ -102,6 +103,7 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   container: {
     flex: 1,

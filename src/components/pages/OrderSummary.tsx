@@ -8,6 +8,8 @@ import {
   StatusBar,
   Modal,
   ScrollView,
+  Platform,
+  Image,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {RootState} from '../../store';
@@ -15,6 +17,7 @@ import {clearCart} from '../../store/slices/cartSlice';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {colors} from '../../assets/theme/colors';
+import { icons } from '../../assets/icons';
 
 // Define the navigation param list type
 type RootStackParamList = {
@@ -136,7 +139,7 @@ const OrderSummary = () => {
 
   // Calculate totals
   const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum: number, item: { price: number; quantity: number }) => sum + item.price * item.quantity,
     0,
   );
   const delivery = 0; // Free delivery
@@ -171,7 +174,7 @@ const OrderSummary = () => {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={goBack} style={styles.backButton}>
-          <Text style={styles.backButtonText}>←</Text>
+          <Image source={icons.back} style={styles.icon} />
         </TouchableOpacity>
         <Text style={styles.title}>Order Summary</Text>
       </View>
@@ -280,7 +283,8 @@ const OrderSummary = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F8F8F8',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     flexDirection: 'row',
@@ -363,6 +367,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
     color: '#333',
+  },
+  icon: {
+    width: 24,
+    height: 24,
+    tintColor: colors.text,
   },
   orderDetailText: {
     fontSize: 16,
