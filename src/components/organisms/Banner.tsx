@@ -1,16 +1,16 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  View, 
-  TouchableOpacity, 
-  StyleProp, 
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  StyleProp,
   ViewStyle,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import Image from '../atoms/Image';
 import Text from '../atoms/Text';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 const BANNER_HEIGHT = width * 0.6; // Maintain aspect ratio
 
 export interface BannerItem {
@@ -25,22 +25,14 @@ interface BannerProps {
   onPress?: () => void;
 }
 
-const Banner: React.FC<BannerProps> = ({ 
-  item, 
-  style, 
-  onPress 
-}) => {
+const Banner: React.FC<BannerProps> = ({item, style, onPress}) => {
   console.log('Banner item:', item);
   return (
-    <TouchableOpacity 
-      style={[styles.container, style]} 
+    <TouchableOpacity
+      style={[styles.container, style]}
       onPress={onPress}
-      activeOpacity={0.9}
-    >
-      <Image 
-        source={{ uri: item.image }} 
-        containerStyle={styles.image}
-      />
+      activeOpacity={0.9}>
+      <Image source={{uri: item.image}} containerStyle={styles.image} />
       <View style={styles.overlay}>
         <Text variant="title" style={styles.title} color="#fff">
           {item.title}
@@ -75,4 +67,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Banner; 
+export default Banner;

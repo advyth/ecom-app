@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  TouchableOpacity, 
-  StyleSheet, 
-  ViewStyle, 
+import {
+  TouchableOpacity,
+  StyleSheet,
+  ViewStyle,
   TextStyle,
   TouchableOpacityProps,
-  StyleProp
+  StyleProp,
 } from 'react-native';
 import Text from './Text';
 
@@ -18,36 +18,32 @@ interface ButtonProps extends TouchableOpacityProps {
   textStyle?: StyleProp<TextStyle>;
 }
 
-const Button: React.FC<ButtonProps> = ({ 
-  title, 
-  variant = 'primary', 
-  containerStyle, 
+const Button: React.FC<ButtonProps> = ({
+  title,
+  variant = 'primary',
+  containerStyle,
   textStyle,
-  ...rest 
+  ...rest
 }) => {
   const getTextStyle = () => {
-    switch(variant) {
-      case 'primary': return styles.primaryText;
-      case 'secondary': return styles.secondaryText;
-      case 'outline': return styles.outlineText;
-      default: return styles.primaryText;
+    switch (variant) {
+      case 'primary':
+        return styles.primaryText;
+      case 'secondary':
+        return styles.secondaryText;
+      case 'outline':
+        return styles.outlineText;
+      default:
+        return styles.primaryText;
     }
   };
 
   return (
-    <TouchableOpacity 
+    <TouchableOpacity
       style={[styles.container, styles[variant], containerStyle]}
       activeOpacity={0.8}
-      {...rest}
-    >
-      <Text 
-        variant="body" 
-        style={[
-          styles.text, 
-          getTextStyle(), 
-          textStyle
-        ]}
-      >
+      {...rest}>
+      <Text variant="body" style={[styles.text, getTextStyle(), textStyle]}>
         {title}
       </Text>
     </TouchableOpacity>
@@ -87,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button; 
+export default Button;

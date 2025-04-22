@@ -1,7 +1,21 @@
 import React from 'react';
-import { Text as RNText, TextStyle, StyleSheet, StyleProp, TextProps as RNTextProps } from 'react-native';
+import {
+  Text as RNText,
+  TextStyle,
+  StyleSheet,
+  StyleProp,
+  TextProps as RNTextProps,
+} from 'react-native';
 
-export type TextVariant = 'header' | 'title' | 'subtitle' | 'body' | 'caption' | 'price' | 'sectionTitle' | 'button';
+export type TextVariant =
+  | 'header'
+  | 'title'
+  | 'subtitle'
+  | 'body'
+  | 'caption'
+  | 'price'
+  | 'sectionTitle'
+  | 'button';
 
 interface TextProps extends RNTextProps {
   children: React.ReactNode;
@@ -10,23 +24,17 @@ interface TextProps extends RNTextProps {
   style?: StyleProp<TextStyle>;
 }
 
-const Text: React.FC<TextProps> = ({ 
-  children, 
-  variant = 'body', 
+const Text: React.FC<TextProps> = ({
+  children,
+  variant = 'body',
   color,
   style,
   ...rest
 }) => {
   return (
-    <RNText 
-      style={[
-        styles.base, 
-        styles[variant], 
-        color && { color }, 
-        style
-      ]}
-      {...rest}
-    >
+    <RNText
+      style={[styles.base, styles[variant], color && {color}, style]}
+      {...rest}>
       {children}
     </RNText>
   );
@@ -74,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Text; 
+export default Text;

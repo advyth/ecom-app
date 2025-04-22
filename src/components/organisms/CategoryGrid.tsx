@@ -1,13 +1,13 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  View, 
-  FlatList, 
-  ListRenderItemInfo, 
-  StyleProp, 
-  ViewStyle 
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  ListRenderItemInfo,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
-import CategoryCard, { Category } from '../molecules/CategoryCard';
+import CategoryCard, {Category} from '../molecules/CategoryCard';
 
 interface CategoryGridProps {
   categories: Category[];
@@ -15,15 +15,15 @@ interface CategoryGridProps {
   onCategoryPress?: (category: Category) => void;
 }
 
-const CategoryGrid: React.FC<CategoryGridProps> = ({ 
-  categories, 
-  style, 
-  onCategoryPress 
+const CategoryGrid: React.FC<CategoryGridProps> = ({
+  categories,
+  style,
+  onCategoryPress,
 }) => {
-  const renderItem = ({ item }: ListRenderItemInfo<Category>) => (
-    <CategoryCard 
-      category={item} 
-      onPress={() => onCategoryPress?.(item)} 
+  const renderItem = ({item}: ListRenderItemInfo<Category>) => (
+    <CategoryCard
+      category={item}
+      onPress={() => onCategoryPress?.(item)}
       style={styles.categoryCard}
     />
   );
@@ -33,7 +33,7 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
       <FlatList
         data={categories}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         numColumns={2}
         columnWrapperStyle={styles.columnWrapper}
         contentContainerStyle={styles.contentContainer}
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   categoryCard: {
     marginBottom: 16,
-  }
+  },
 });
 
-export default CategoryGrid; 
+export default CategoryGrid;

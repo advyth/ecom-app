@@ -118,7 +118,9 @@ const ProductDetailTemplate: React.FC<ProductDetailTemplateProps> = ({
                       key={color}
                       style={[
                         styles.colorOption,
-                        selectedColor === color ? styles.selectedColorBorder : styles.transparentBorder,
+                        selectedColor === color
+                          ? styles.selectedColorBorder
+                          : styles.transparentBorder,
                       ]}
                       onPress={() => onColorSelect?.(color)}>
                       <Text
@@ -145,7 +147,9 @@ const ProductDetailTemplate: React.FC<ProductDetailTemplateProps> = ({
                       key={size}
                       style={[
                         styles.sizeOption,
-                          selectedSize === size ? styles.selectedSizeBorder : styles.defaultSizeBorder,
+                        selectedSize === size
+                          ? styles.selectedSizeBorder
+                          : styles.defaultSizeBorder,
                       ]}
                       onPress={() => onSizeSelect?.(size)}>
                       <Text

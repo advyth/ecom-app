@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, StyleProp, ViewStyle } from 'react-native';
+import {StyleSheet, View, StyleProp, ViewStyle} from 'react-native';
 import Text from '../atoms/Text';
-import { TouchableOpacity } from 'react-native';
+import {TouchableOpacity} from 'react-native';
 
 interface SectionHeaderProps {
   title: string;
@@ -10,18 +10,22 @@ interface SectionHeaderProps {
   onActionPress?: () => void;
 }
 
-const SectionHeader: React.FC<SectionHeaderProps> = ({ 
-  title, 
-  actionLabel = 'View All', 
+const SectionHeader: React.FC<SectionHeaderProps> = ({
+  title,
+  actionLabel = 'View All',
   style,
   onActionPress,
 }) => {
   return (
     <View style={[styles.container, style]}>
-      <Text variant="title" style={styles.title}>{title}</Text>
+      <Text variant="title" style={styles.title}>
+        {title}
+      </Text>
       {onActionPress && (
         <TouchableOpacity onPress={onActionPress}>
-          <Text variant="caption" style={styles.actionLabel}>{actionLabel}</Text>
+          <Text variant="caption" style={styles.actionLabel}>
+            {actionLabel}
+          </Text>
         </TouchableOpacity>
       )}
     </View>
@@ -44,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SectionHeader; 
+export default SectionHeader;

@@ -15,7 +15,7 @@ import {mockData} from '../../data/mock';
 import {ProductData} from '../../data/mock/products';
 
 // Replace dynamic generation with the specified hardcoded list
-const trendingSearches = ["air", "coat", "dress"];
+const trendingSearches = ['air', 'coat', 'dress'];
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -77,7 +77,7 @@ const Search = () => {
       {searchQuery.trim() && (
         <FlatList
           data={results}
-          keyExtractor={(item) => item.id}
+          keyExtractor={item => item.id}
           renderItem={({item}) => (
             <SearchResultItem
               id={item.id}
@@ -90,10 +90,12 @@ const Search = () => {
           contentContainerStyle={styles.resultsList}
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
-              <Text style={styles.emptyText}>No results found for "{searchQuery}"</Text>
+              <Text style={styles.emptyText}>
+                No results found for "{searchQuery}"
+              </Text>
             </View>
           }
-          style={!searchQuery.trim() ? { display: 'none' } : {}}
+          style={!searchQuery.trim() ? {display: 'none'} : {}}
         />
       )}
     </SafeAreaView>

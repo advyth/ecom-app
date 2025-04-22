@@ -1,10 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, SafeAreaView, StatusBar } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  SafeAreaView,
+  StatusBar,
+} from 'react-native';
 import Header from '../organisms/Header';
 import FeaturedBanners from '../organisms/FeaturedBanners';
 import ProductList from '../organisms/ProductList';
-import { BannerItem } from '../organisms/Banner';
-import { Product } from '../molecules/ProductCard';
+import {BannerItem} from '../organisms/Banner';
+import {Product} from '../molecules/ProductCard';
 
 interface HomeTemplateProps {
   storeName: string;
@@ -35,17 +41,14 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <View style={styles.container}>
-        <Header
-          title={storeName}
-          onCartPress={onCartPress}
-        />
+        <Header title={storeName} onCartPress={onCartPress} />
         <ScrollView showsVerticalScrollIndicator={false}>
           <FeaturedBanners
             banners={featuredBanners}
             onBannerPress={onBannerPress}
             style={styles.featuredBanners}
           />
-          
+
           {/* Trending Products */}
           {trendingProducts.length > 0 && (
             <ProductList
@@ -56,7 +59,7 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({
               style={styles.productSection}
             />
           )}
-          
+
           {/* New Arrivals */}
           {newArrivals.length > 0 && (
             <ProductList
@@ -67,7 +70,7 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({
               style={styles.productSection}
             />
           )}
-          
+
           {/* Featured Products */}
           {featuredProducts.length > 0 && (
             <ProductList
@@ -78,7 +81,7 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({
               style={styles.productSection}
             />
           )}
-          
+
           {/* Shoes Collection */}
           {shoesProducts.length > 0 && (
             <ProductList

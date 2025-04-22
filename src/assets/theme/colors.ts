@@ -10,4 +10,3 @@ export const colors = {
   shadow: '#000000',
   white: '#ffffff',
 };
-

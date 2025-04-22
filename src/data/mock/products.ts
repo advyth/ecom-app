@@ -250,12 +250,12 @@ export const shoesProducts: ProductData[] = [
     title: 'Air Jordan 1 Low',
     price: 320,
     category: ProductCategory.SHOES,
-    image: 
+    image:
       'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80',
     colors: ['Black', 'White', 'Red'],
     sizes: ['7', '8', '9', '10', '11', '12'],
-    description: 
-      'The Air Jordan 1 Low offers a clean, classic look that\'s familiar but always fresh. With an iconic design that pairs perfectly with any outfit, these kicks ensure style is always on point.',
+    description:
+      "The Air Jordan 1 Low offers a clean, classic look that's familiar but always fresh. With an iconic design that pairs perfectly with any outfit, these kicks ensure style is always on point.",
     tags: [ProductTag.DISCOUNTED],
   },
 ];

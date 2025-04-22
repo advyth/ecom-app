@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 // Define types for our cart items
 export interface CartItem {
@@ -28,7 +28,8 @@ const initialState: CartState = {
       color: 'Black',
       price: 559,
       quantity: 1,
-      image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
+      image:
+        'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
     },
     {
       id: '2',
@@ -38,7 +39,8 @@ const initialState: CartState = {
       color: 'Brown',
       price: 485,
       quantity: 1,
-      image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
+      image:
+        'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
     },
     {
       id: '3',
@@ -48,7 +50,8 @@ const initialState: CartState = {
       color: 'Grey',
       price: 485,
       quantity: 1,
-      image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
+      image:
+        'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
     },
   ],
 };
@@ -59,8 +62,10 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
-      const existingItem = state.items.find(item => item.id === action.payload.id);
-      
+      const existingItem = state.items.find(
+        item => item.id === action.payload.id,
+      );
+
       if (existingItem) {
         // If the item exists, increase the quantity
         existingItem.quantity += action.payload.quantity;
@@ -69,38 +74,38 @@ const cartSlice = createSlice({
         state.items.push(action.payload);
       }
     },
-    
+
     removeFromCart: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter(item => item.id !== action.payload);
     },
-    
+
     increaseQuantity: (state, action: PayloadAction<string>) => {
       const item = state.items.find(item => item.id === action.payload);
       if (item) {
         item.quantity += 1;
       }
     },
-    
+
     decreaseQuantity: (state, action: PayloadAction<string>) => {
       const item = state.items.find(item => item.id === action.payload);
       if (item && item.quantity > 1) {
         item.quantity -= 1;
       }
     },
-    
-    clearCart: (state) => {
+
+    clearCart: state => {
       state.items = [];
-    }
+    },
   },
 });
 
 // Export actions and reducer
-export const { 
+export const {
   addToCart,
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-  clearCart
+  clearCart,
 } = cartSlice.actions;
 
-export default cartSlice.reducer; 
+export default cartSlice.reducer;

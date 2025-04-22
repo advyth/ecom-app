@@ -1,15 +1,15 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  View, 
-  StyleProp, 
+import {
+  StyleSheet,
+  View,
+  StyleProp,
   ViewStyle,
   ScrollView,
-  Dimensions
+  Dimensions,
 } from 'react-native';
-import Banner, { BannerItem } from './Banner';
+import Banner, {BannerItem} from './Banner';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 const BANNER_WIDTH = (width - 40) / 2; // 2 columns with margins
 
 interface FeaturedBannersProps {
@@ -18,19 +18,18 @@ interface FeaturedBannersProps {
   onBannerPress?: (banner: BannerItem) => void;
 }
 
-const FeaturedBanners: React.FC<FeaturedBannersProps> = ({ 
-  banners, 
+const FeaturedBanners: React.FC<FeaturedBannersProps> = ({
+  banners,
   style,
-  onBannerPress 
+  onBannerPress,
 }) => {
   return (
     <View style={[styles.container, style]}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
-      >
-        {banners.map((banner) => (
+        contentContainerStyle={styles.scrollContent}>
+        {banners.map(banner => (
           <Banner
             key={banner.id}
             item={banner}
@@ -57,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FeaturedBanners; 
+export default FeaturedBanners;

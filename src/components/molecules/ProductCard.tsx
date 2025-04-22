@@ -14,7 +14,7 @@ const {width} = Dimensions.get('window');
 const CARD_WIDTH = (width - 48) / 2; // 2 columns with 16px padding on sides and 16px between
 
 // Import the ProductTag enum from the products file
-import { ProductTag } from '../../data/mock/products';
+import {ProductTag} from '../../data/mock/products';
 
 export interface Product {
   id: string;
@@ -74,21 +74,15 @@ const ProductCard: React.FC<ProductCardProps> = ({product, style, onPress}) => {
       activeOpacity={0.9}>
       <View style={styles.imageContainer}>
         <Image source={{uri: product.image}} containerStyle={styles.image} />
-        
+
         {/* Display tags if available */}
         {product.tags && product.tags.length > 0 && (
           <View style={styles.tagsContainer}>
             {product.tags.map((tag, index) => (
-              <View 
-                key={index} 
-                style={[
-                  styles.tagBadge, 
-                  { backgroundColor: getTagColor(tag) }
-                ]}
-              >
-                <Text style={styles.tagText}>
-                  {getTagDisplayText(tag)}
-                </Text>
+              <View
+                key={index}
+                style={[styles.tagBadge, {backgroundColor: getTagColor(tag)}]}>
+                <Text style={styles.tagText}>{getTagDisplayText(tag)}</Text>
               </View>
             ))}
           </View>

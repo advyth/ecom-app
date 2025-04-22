@@ -1,9 +1,9 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import HomeTemplate from '../templates/HomeTemplate';
-import { BannerItem } from '../organisms/Banner';
-import { Product } from '../molecules/ProductCard';
-import { mockData } from '../../data/mock';
+import {BannerItem} from '../organisms/Banner';
+import {Product} from '../molecules/ProductCard';
+import {mockData} from '../../data/mock';
 
 const Home = () => {
   // Cast the navigation to include our route types
@@ -16,10 +16,13 @@ const Home = () => {
 
   const handleProductPress = (product: Product) => {
     // Navigate to product details page
-    console.log('Product pressed, attempting to navigate to ProductDetail with id:', product.id);
-    
+    console.log(
+      'Product pressed, attempting to navigate to ProductDetail with id:',
+      product.id,
+    );
+
     try {
-      navigation.navigate('ProductDetail', { productId: product.id });
+      navigation.navigate('ProductDetail', {productId: product.id});
       console.log('Navigation call completed');
     } catch (error) {
       console.error('Navigation error:', error);

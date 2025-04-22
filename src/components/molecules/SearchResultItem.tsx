@@ -32,7 +32,7 @@ const SearchResultItem: React.FC<SearchResultItemProps> = ({
       activeOpacity={0.8}>
       <View style={styles.imageContainer}>
         <RNImage
-          source={typeof image === 'string' ? { uri: image } : image}
+          source={typeof image === 'string' ? {uri: image} : image}
           style={styles.image}
           resizeMode="cover"
         />
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchResultItem; 
+export default SearchResultItem;
